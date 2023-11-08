@@ -1,0 +1,19 @@
+.message {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+
+  &-author {
+    font-size: 0.8rem;
+    margin-left: 5px;
+  }
+
+  &-content {
+    padding: 5px;
+    max-width: 50%;
+    border: solid 1px black;
+    background-color: white;
+    border-radius: 5px;
+  }
+}
