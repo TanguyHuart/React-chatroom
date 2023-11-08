@@ -20,12 +20,13 @@ function Form() {
   return (
     <form className="form" onSubmit={handleOnSubmitMessage}>
       <input
-        type="text"
+        type="textarea"
         className="form-input"
         placeholder="Saississez votre message"
         onChange={handleOnChangeInputMessage}
         value={inputValue}
       />
+      <input type="submit" value="Envoyer" />
     </form>
   );
 }

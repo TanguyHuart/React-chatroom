@@ -7,7 +7,7 @@ const initialState: ChatState = {
       content: 'Coucou',
     },
     {
-      content: 'Ceci est un test',
+      content: 'Montres-moi ton Strappi..',
     },
   ],
 };
