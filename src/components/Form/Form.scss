@@ -19,5 +19,11 @@
     background-color: transparent;
     color: v.$text-blue;
     cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  &-input:focus + &-button {
+    background-color: v.$text-blue;
+    color: #ffffff;
   }
 }

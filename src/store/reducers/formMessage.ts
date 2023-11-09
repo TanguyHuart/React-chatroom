@@ -6,8 +6,8 @@ const initialState: FormState = {
   input: '',
 };
 
-const formSlice = createSlice({
-  name: 'form',
+const formMessageSlice = createSlice({
+  name: 'formMessage',
   initialState,
   reducers: {
     changeInput(state, action: PayloadAction<string>) {
@@ -16,6 +16,6 @@ const formSlice = createSlice({
   },
 });
 
-export const { changeInput } = formSlice.actions;
+export const { changeInput } = formMessageSlice.actions;
 
-export default formSlice.reducer;
+export default formMessageSlice.reducer;

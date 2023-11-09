@@ -1,12 +1,13 @@
 import { ChangeEvent, FormEvent } from 'react';
+import { Send } from 'react-feather';
 import './Form.scss';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { changeInput } from '../../store/reducers/form';
+import { changeInput } from '../../store/reducers/formMessage';
 import { addNewMessage } from '../../store/reducers/chat';
 
 function Form() {
-  const inputValue = useAppSelector((state) => state.form.input);
-  const author = useAppSelector((state) => state.form.author);
+  const inputValue = useAppSelector((state) => state.formMessage.input);
+  const author = useAppSelector((state) => state.formMessage.author);
   const dispatch = useAppDispatch();
 
   const handleOnChangeInputMessage = (event: ChangeEvent<HTMLInputElement>) => {
@@ -35,7 +36,7 @@ function Form() {
         value={inputValue}
       />
       <button className="form-button" type="submit" value="Envoyer">
-        &gt;
+        <Send />
       </button>
     </form>
   );
