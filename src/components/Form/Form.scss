@@ -1,7 +1,23 @@
+@use '../../styles/variables' as v;
+
 .form {
-  height: 10%;
+  display: flex;
+  background-color: #ffffff;
+
   &-input {
-    width: 90%;
-    height: 100%;
+    flex-grow: 1;
+    border: none;
+    height: 2.5rem;
+    padding: 0 1rem;
+    outline: none;
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+  }
+
+  &-button {
+    border: none;
+    background-color: transparent;
+    color: v.$text-blue;
+    cursor: pointer;
   }
 }

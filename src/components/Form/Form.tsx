@@ -6,16 +6,24 @@ import { addNewMessage } from '../../store/reducers/chat';
 
 function Form() {
   const inputValue = useAppSelector((state) => state.form.input);
+  const author = useAppSelector((state) => state.form.author);
   const dispatch = useAppDispatch();
+
   const handleOnChangeInputMessage = (event: ChangeEvent<HTMLInputElement>) => {
     dispatch(changeInput(event.target.value));
   };
 
-  function handleOnSubmitMessage(event: FormEvent<HTMLFormElement>): void {
+  const handleOnSubmitMessage = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    dispatch(addNewMessage({ content: inputValue }));
+    dispatch(
+      addNewMessage({
+        content: inputValue,
+        id: crypto.randomUUID(),
+        author,
+      })
+    );
     dispatch(changeInput(''));
-  }
+  };
 
   return (
     <form className="form" onSubmit={handleOnSubmitMessage}>
@@ -26,7 +34,9 @@ function Form() {
         onChange={handleOnChangeInputMessage}
         value={inputValue}
       />
-      <input type="submit" value="Envoyer" />
+      <button className="form-button" type="submit" value="Envoyer">
+        &gt;
+      </button>
     </form>
   );
 }

@@ -2,5 +2,5 @@
 @use 'variables' as v;
 
 body {
-  background-color: #1f5d6d;
+  background-color: v.$dark-blue;
 }
