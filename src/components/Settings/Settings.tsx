@@ -39,15 +39,15 @@ function Settings() {
 
   return (
     <div className={`settings ${loginFormIsVisible ? '' : 'settings--hidden'}`}>
-      <button
-        type="button"
-        className={`settings__button ${
-          loginFormIsVisible ? 'spin' : 'spinout'
-        } `}
-        onClick={handleOnClickSettingFormState}
-      >
-        <X />
-      </button>
+      <div className={`${loginFormIsVisible ? 'spin' : 'spinout'}`}>
+        <button
+          type="button"
+          className="settings__button"
+          onClick={handleOnClickSettingFormState}
+        >
+          <X />
+        </button>
+      </div>
 
       <form className="settings__form" onSubmit={handleOnSubmitLoginForm}>
         <input

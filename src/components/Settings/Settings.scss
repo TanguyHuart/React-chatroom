@@ -22,15 +22,6 @@
     &:hover {
       transform: scale(1.1);
       transition: transform 300ms ease;
-      animation: none;
-    }
-
-    &.spin {
-      animation: spin 500ms ease 0s 1 normal forwards;
-    }
-
-    &.spinout {
-      animation: spinout 500ms ease 0s 1 normal forwards;
     }
   }
 
@@ -52,6 +43,16 @@
       border-radius: 5px;
     }
   }
+}
+
+.spin {
+  height: 2rem;
+  animation: spin 500ms ease 0s 1 normal forwards;
+}
+
+.spinout {
+  height: 2rem;
+  animation: spinout 500ms ease 0s 1 normal forwards;
 }
 
 .settings--hidden {

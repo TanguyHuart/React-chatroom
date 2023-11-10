@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { LoginFormState } from '../../@types';
 
 const initialState: LoginFormState = {
-  loginFormIsVisible: false,
+  loginFormIsVisible: true,
   emailInput: '',
   passwordInput: '',
 };
