@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { FormState } from '../../@types';
+import { MessageFormState } from '../../@types';
 
-const initialState: FormState = {
+const initialState: MessageFormState = {
   author: 'YsT',
   input: '',
 };

@@ -6,8 +6,9 @@
   right: 0;
   top: 0;
   display: flex;
-  gap: 10px;
+  gap: 1rem;
   margin: 1rem;
+  animation: slidein 500ms ease 0s 1 normal forwards;
 
   &__button {
     width: 2rem;
@@ -18,10 +19,18 @@
     border: none;
     border-radius: 50% 50% 50% 50%;
 
-    transition: all 200ms;
-
     &:hover {
       transform: scale(1.1);
+      transition: transform 300ms ease;
+      animation: none;
+    }
+
+    &.spin {
+      animation: spin 500ms ease 0s 1 normal forwards;
+    }
+
+    &.spinout {
+      animation: spinout 500ms ease 0s 1 normal forwards;
     }
   }
 
@@ -44,3 +53,56 @@
     }
   }
 }
+
+.settings--hidden {
+  animation: slideout 500ms ease 0s 1 normal forwards;
+}
+
+@keyframes slidein {
+  0% {
+    transform: translateX(230px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideout {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(230px);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(225deg);
+  }
+
+  100% {
+    transform: rotate(0);
+  }
+}
+
+@keyframes spinout {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(225deg);
+  }
+}
+
+// @keyframes scale {
+//   0% {
+//     transform: scale(1);
+//   }
+//   100% {
+//     transform: scale(1.1);
+//   }
+// }

@@ -8,7 +8,13 @@ export interface ChatState {
   messages: TMessage[];
 }
 
-export interface FormState {
+export interface MessageFormState {
   author: string;
   input: string;
+}
+
+export interface LoginFormState {
+  loginFormIsVisible: boolean;
+  emailInput: string;
+  passwordInput: string;
 }

@@ -6,8 +6,8 @@ import { changeInput } from '../../store/reducers/formMessage';
 import { addNewMessage } from '../../store/reducers/chat';
 
 function Form() {
-  const inputValue = useAppSelector((state) => state.formMessage.input);
-  const author = useAppSelector((state) => state.formMessage.author);
+  const inputValue = useAppSelector((state) => state.messageForm.input);
+  const author = useAppSelector((state) => state.messageForm.author);
   const dispatch = useAppDispatch();
 
   const handleOnChangeInputMessage = (event: ChangeEvent<HTMLInputElement>) => {

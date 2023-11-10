@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import chatReducer from './reducers/chat';
-import formMessageReducer from './reducers/formMessage';
+import messageFormReducer from './reducers/formMessage';
+import loginFormReducer from './reducers/formLogin';
 
 const store = configureStore({
   reducer: {
     chat: chatReducer,
-    formMessage: formMessageReducer,
+    messageForm: messageFormReducer,
+    loginForm: loginFormReducer,
   },
 });
 

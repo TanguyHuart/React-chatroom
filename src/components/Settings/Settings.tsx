@@ -1,24 +1,71 @@
+import { ChangeEvent, FormEvent } from 'react';
 import { X } from 'react-feather';
 import './Settings.scss';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import {
+  changeEmailInput,
+  changeLoginState,
+  changePasswordInput,
+} from '../../store/reducers/formLogin';
 
 function Settings() {
+  const dispatch = useAppDispatch();
+  const loginFormIsVisible = useAppSelector(
+    (state) => state.loginForm.loginFormIsVisible
+  );
+  const emailInputValue = useAppSelector((state) => state.loginForm.emailInput);
+  const passwordInputValue = useAppSelector(
+    (state) => state.loginForm.passwordInput
+  );
+  const handleOnClickSettingFormState = () => {
+    dispatch(changeLoginState());
+  };
+
+  function handleOnChangeEmailInput(
+    event: ChangeEvent<HTMLInputElement>
+  ): void {
+    dispatch(changeEmailInput(event.target.value));
+  }
+
+  function handleOnChangePasswordInput(
+    event: ChangeEvent<HTMLInputElement>
+  ): void {
+    dispatch(changePasswordInput(event.target.value));
+  }
+
+  function handleOnSubmitLoginForm(event: FormEvent<HTMLFormElement>): void {
+    event.preventDefault();
+  }
+
   return (
-    <div className="settings">
-      <button type="button" className="settings__button">
+    <div className={`settings ${loginFormIsVisible ? '' : 'settings--hidden'}`}>
+      <button
+        type="button"
+        className={`settings__button ${
+          loginFormIsVisible ? 'spin' : 'spinout'
+        } `}
+        onClick={handleOnClickSettingFormState}
+      >
         <X />
       </button>
-      <form className="settings__form">
+
+      <form className="settings__form" onSubmit={handleOnSubmitLoginForm}>
         <input
           className="settings__form-input"
           type="email"
           name="email"
           id="email"
           placeholder="Email"
+          onChange={handleOnChangeEmailInput}
+          value={emailInputValue}
         />
         <input
           className="settings__form-input"
           placeholder="Mot de passe"
           type="text"
+          name="password"
+          onChange={handleOnChangePasswordInput}
+          value={passwordInputValue}
         />
         <button className="settings__form-button" type="submit">
           Envoyer
