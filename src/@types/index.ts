@@ -15,6 +15,11 @@ export interface MessageFormState {
 
 export interface LoginFormState {
   loginFormIsVisible: boolean;
-  emailInput: string;
-  passwordInput: string;
+  credentials: {
+    email: string;
+    password: string;
+  };
+  pseudo: string;
+  error: null | string;
+  isLoading: boolean;
 }

@@ -1,11 +1,12 @@
+import clsx from 'clsx';
 import { ChangeEvent, FormEvent } from 'react';
 import { X } from 'react-feather';
 import './Settings.scss';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import {
-  changeEmailInput,
+  changeInputValue,
   changeLoginState,
-  changePasswordInput,
+  login,
 } from '../../store/reducers/formLogin';
 
 function Settings() {
@@ -13,41 +14,58 @@ function Settings() {
   const loginFormIsVisible = useAppSelector(
     (state) => state.loginForm.loginFormIsVisible
   );
-  const emailInputValue = useAppSelector((state) => state.loginForm.emailInput);
+  const emailInputValue = useAppSelector(
+    (state) => state.loginForm.credentials.email
+  );
   const passwordInputValue = useAppSelector(
-    (state) => state.loginForm.passwordInput
+    (state) => state.loginForm.credentials.password
   );
   const handleOnClickSettingFormState = () => {
     dispatch(changeLoginState());
   };
 
-  function handleOnChangeEmailInput(
-    event: ChangeEvent<HTMLInputElement>
-  ): void {
-    dispatch(changeEmailInput(event.target.value));
-  }
+  const handleOnChangeEmailInput = (event: ChangeEvent<HTMLInputElement>) => {
+    dispatch(
+      changeInputValue({
+        fieldName: 'email',
+        value: event.target.value,
+      })
+    );
+  };
 
-  function handleOnChangePasswordInput(
+  const handleOnChangePasswordInput = (
     event: ChangeEvent<HTMLInputElement>
-  ): void {
-    dispatch(changePasswordInput(event.target.value));
-  }
+  ) => {
+    dispatch(
+      changeInputValue({
+        fieldName: 'password',
+        value: event.target.value,
+      })
+    );
+  };
 
-  function handleOnSubmitLoginForm(event: FormEvent<HTMLFormElement>): void {
+  const handleOnSubmitLoginForm = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-  }
+
+    dispatch(
+      login({
+        email: emailInputValue,
+        password: passwordInputValue,
+      })
+    );
+  };
 
   return (
-    <div className={`settings ${loginFormIsVisible ? '' : 'settings--hidden'}`}>
-      <div className={`${loginFormIsVisible ? 'spin' : 'spinout'}`}>
-        <button
-          type="button"
-          className="settings__button"
-          onClick={handleOnClickSettingFormState}
-        >
-          <X />
-        </button>
-      </div>
+    <div
+      className={clsx('settings', { 'settings--hidden': !loginFormIsVisible })}
+    >
+      <button
+        type="button"
+        className="settings__button"
+        onClick={handleOnClickSettingFormState}
+      >
+        <X />
+      </button>
 
       <form className="settings__form" onSubmit={handleOnSubmitLoginForm}>
         <input
