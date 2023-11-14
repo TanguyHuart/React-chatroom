@@ -3,11 +3,12 @@ import { Send } from 'react-feather';
 import './Form.scss';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { changeInput } from '../../store/reducers/formMessage';
-import { addNewMessage } from '../../store/reducers/chat';
+
+import { sendMessege } from '../../socket/chat';
 
 function Form() {
   const inputValue = useAppSelector((state) => state.messageForm.input);
-  const author = useAppSelector((state) => state.messageForm.author);
+
   const dispatch = useAppDispatch();
 
   const handleOnChangeInputMessage = (event: ChangeEvent<HTMLInputElement>) => {
@@ -16,14 +17,15 @@ function Form() {
 
   const handleOnSubmitMessage = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    dispatch(
-      addNewMessage({
-        content: inputValue,
-        id: crypto.randomUUID(),
-        author,
-      })
-    );
-    dispatch(changeInput(''));
+    // dispatch(
+    //   addNewMessage({
+    //     content: inputValue,
+    //     id: crypto.randomUUID(),
+    //     author,
+    //   })
+    // );
+    sendMessege();
+    // dispatch(changeInput(''));
   };
 
   return (

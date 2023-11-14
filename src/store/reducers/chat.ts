@@ -1,5 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { ChatState, TMessage } from '../../@types';
+import type { RootState } from '..';
 
 const initialState: ChatState = {
   messages: [
@@ -27,5 +28,8 @@ const chatSlice = createSlice({
 });
 
 export const { addNewMessage } = chatSlice.actions;
+
+export const selectIsMine = (author: string) => (state: RootState) =>
+  state.loginForm.pseudo === author;
 
 export default chatSlice.reducer;

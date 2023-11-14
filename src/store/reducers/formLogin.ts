@@ -5,10 +5,10 @@ import { LoginFormState } from '../../@types';
 const initialState: LoginFormState = {
   loginFormIsVisible: true,
   credentials: {
-    email: '',
-    password: '',
+    email: 'bouclierman@herocorp.io',
+    password: 'jennifer',
   },
-  pseudo: '',
+  pseudo: 'Moi',
   error: null,
   isLoading: false,
 };
